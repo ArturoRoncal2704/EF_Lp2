@@ -13,10 +13,11 @@ public class Utilitarios {
 		try {
 			
 			byte[] fotoBytes = foto.getBytes();
-			Path pathImagen = Paths.get("src/main/resource/static/usuario_foto" + 
+			Path pathImagen = Paths.get("src/main/resources/static/usuario_foto/" + 
 					foto.getOriginalFilename()
 					);
 			Files.write(pathImagen, fotoBytes );
+			
 			return foto.getOriginalFilename();
 			
 			

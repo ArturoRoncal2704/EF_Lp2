@@ -22,7 +22,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	
 	
-	private UsuarioRepository usuarioRepository;
+	private final UsuarioRepository usuarioRepository;
 	
 	
 	@Override
