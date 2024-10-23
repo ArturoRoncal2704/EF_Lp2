@@ -48,7 +48,7 @@ public class UsuarioController {
 		boolean usuarioValidado = usuarioService.validarUsuario(usuarioFormulario);
 		if(usuarioValidado) {
 			session.setAttribute("usuario", usuarioFormulario.getEmail());
-			return "redirect:/menu";
+			return "redirect:/lista";
 		}
 		
 		model.addAttribute("loginInvalido","No existe el usuario");

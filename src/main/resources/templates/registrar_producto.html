@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Empleado</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css"></head></head>
+<body>
+    <div class="container mt-5">
+        <h2>Registrar Empleado</h2>
+        <form th:action="@{/registrar_producto}" th:object="${producto}" method="post" class="mt-4">
+       		<div class="form-group">
+				<label for="dni">Nombre del producto:</label>
+				    <input type="text" th:field="*{nombreProducto}" id="nombreProducto"  />
+            </div>
+            <div class="form-group">
+				<label for="codAlumno">Precio:</label>
+				    <input type="number" th:field="*{precio}" id="precio" />
+            </div>
+            <div class="form-group">
+				<label for="nombres">Stock</label>
+				    <input type="text" th:field="*{Stock}" id="Stock" required/>
+            </div>
+			<div>
+				<select th:field="*{categoriaEntity}" class="form-control" id="categoriaEntity" required>
+							    <option th:each="categoria : ${listaCategoria}" 
+							            th:value="${categoria.catId}" 
+							            th:text="${categoria.nombreCat}">
+							    </option>
+							</select>	
+			</div>
+
+
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Lista de Productos</h2>
+
+        <div th:if="${error}" class="alert alert-danger" role="alert">
+            <span th:text="${error}"></span>
+        </div>
+        
+        <a th:href="@{/registrar_producto}" class="btn btn-primary mb-3">Registrar</a>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="producto : ${listaprod}">
+                    <td th:text="${producto.idProducto}"></td>
+                    <td th:text="${producto.nombreProducto}"></td>
+                    <td th:text="${producto.precio}"></td>
+                    <td th:text="${producto.stock}"></td> 
+                    <td th:text="${producto.categoriaEntity.nombreCat}"></td>
+                    <td>
+                        <div class="d-flex">
+                            <a th:href="@{/detalle_producto/{id}(id=${producto.idProducto})}" class="btn btn-info me-2">Ver</a>
+                            <a th:href="@{/editar_producto/{id}(id=${producto.idProducto})}" class="btn btn-warning">Editar</a>
+                            <a th:href="@{/delete/{id}(id=${producto.idProducto})}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </td> 
+                </tr> 
+            </tbody>  
+        </table> 
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script> 
+</body> 
+</html>

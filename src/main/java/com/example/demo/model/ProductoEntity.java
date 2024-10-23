@@ -33,7 +33,10 @@ public class ProductoEntity {
 	@Column(name = "precio",nullable = false, length = 45)
 	private Double precio;
 	
+	@Column(name = "stock",nullable = false, length = 45)
+	private Integer Stock;
+	
 	@ManyToOne
 	@JoinColumn(name ="categoria_id", nullable = false)
-	private CategoríaEnrtity categoriaEntity;
+	private CategoriaEntity categoriaEntity;
 }
