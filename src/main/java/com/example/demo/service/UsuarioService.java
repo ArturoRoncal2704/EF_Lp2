@@ -11,6 +11,6 @@ import com.example.demo.model.UsuarioEntity;
 public interface UsuarioService {
 	
 	void crearUsuario(UsuarioEntity usuarioEntity, MultipartFile foto);
-	boolean validarUsuario(UsuarioEntity usuarioEntity);
+	boolean validarUsuario(UsuarioEntity usuarioFormulario);
 	
 }

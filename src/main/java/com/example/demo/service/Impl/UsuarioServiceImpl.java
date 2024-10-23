@@ -39,9 +39,18 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public boolean validarUsuario(UsuarioEntity usuarioEntity) {
+	public boolean validarUsuario(UsuarioEntity usuarioFormulario) {
 		// TODO Auto-generated method stub
-		return false;
+		UsuarioEntity usuarioEncontrado = usuarioRepository
+				.findByEmail(usuarioFormulario.getEmail());
+		if(usuarioEncontrado == null) {
+			return false;
+		}
+		if(!Utilitarios.checkPassword(usuarioFormulario.getPassword() , usuarioEncontrado.getPassword())) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	
