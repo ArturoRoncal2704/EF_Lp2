@@ -3,8 +3,11 @@ Esto es el Examen Final de Lenguaje de programación II
 
 
 #CREAR LA BD (bd_20215564)
+
 #INSERTAR CATEGORIAS A LA BD
-/*INSERT INTO tb_categoria (nombre_categoria) VALUES
+
+
+INSERT INTO tb_categoria (nombre_categoria) VALUES
 ('Electrónica'),
 ('Ropa'),
 ('Hogar'),
@@ -12,7 +15,7 @@ Esto es el Examen Final de Lenguaje de programación II
 ('Juguetes'),
 ('Belleza'),
 ('Alimentos'),
-('Libros'),
+('Libros'),                        
 ('Muebles'),
-('Automóviles');*/
+('Automóviles');
 
