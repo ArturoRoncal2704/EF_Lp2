@@ -33,7 +33,7 @@ public class UsuarioController {
 			Model model, @RequestParam("foto") MultipartFile foto) {
 		
 		usuarioService.crearUsuario(usuarioFormulario, foto);
-		return "registrar_usuario";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/")

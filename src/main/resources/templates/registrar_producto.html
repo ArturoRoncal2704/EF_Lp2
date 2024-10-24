@@ -7,7 +7,14 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Registrar Producto</h2>
+		<div class="d-flex justify-content-between align-items-center mb-4">
+		                <h2 class="display-4">Registrar Productos</h2>
+		                <div class="d-flex align-items-center">		                    
+		                    <div>
+		                        <a class="btn btn-warning" th:href="@{/logout}" role="button">Cerrar sesión</a>
+		                    </div>
+		                </div>
+		            </div>
         <form th:action="@{/registrar_producto}" th:object="${producto}" method="post" class="mt-4">
             <div class="form-group">
                 <label for="nombreProducto">Nombre del producto:</label>
