@@ -71,23 +71,20 @@
         <th>Categoria</th>
     </tr>
     </thead>
-    <tbody>
-		<tr th:each="prod : ${productos}">
-		    <td th:text="${prod.id_producto}"></td>
-		    <td th:text="${prod.nombre_producto}"></td>
-		    <td th:text="${prod.stock}"></td>
-		    <td th:text="'S/' + ${prod.precio}"></td>
-			<span th:text="${prod['categoriaEntity'].nombreCat}"></span>
-
-		</tr>
-
-    </tbody>
+	<tbody>
+	            <tr th:each="producto : ${productos}">
+	                <td th:text="${producto.id}"></td>
+	                <td th:text="${producto.nombreProducto}"></td>
+	                <td th:text="${producto.precio}"></td>
+	                <td th:text="${producto.stock}"></td>
+	            </tr>
+	        </tbody>
 </table>
 
 
 <div class="signature">
     <img src="https://cdn.shopify.com/s/files/1/0594/4639/5086/files/Line_Through_Name.jpg" alt="Firma">
 </div>
-<span>CIBERTEC SAC.</span>
+<span>Reporte generado por</span>
 </body>
 </html>

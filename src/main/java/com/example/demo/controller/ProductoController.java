@@ -29,6 +29,8 @@ import com.example.demo.service.UsuarioService;
 import com.example.demo.service.Impl.PdfService;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -61,6 +63,7 @@ public class ProductoController {
 				correoSesion);
 				
 		model.addAttribute("foto",usuarioEncontrado.getUrlImagen());
+		model.addAttribute("nombreUsuario", usuarioEncontrado.getNombre()); 
 	
 		List<ProductoEntity> listarProducto = productoService.listarProducto();
 		model.addAttribute("listaprod", listarProducto);
@@ -108,6 +111,26 @@ public class ProductoController {
 	}
 	
 	
+	@GetMapping("/generar_pdf")
+    public ResponseEntity<InputStreamResource>generarPDf(HttpSession sesion) throws IOException{
+		if (sesion.getAttribute("usuario") == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+	    }
+		List<ProductoEntity> listaProductos = productoService.listarProducto();
+		
+		Map<String, Object> datosPdf = new HashMap<>();
+	    datosPdf.put("productos", listaProductos);
+		
+	    ByteArrayInputStream pdfBytes = pdfService.generarPdf("template_pdf", datosPdf);
+
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.add("Content-Disposition", "inline; filename=productos.pdf");
+	    
+	    return ResponseEntity.ok()
+	            .headers(headers)
+	            .contentType(MediaType.APPLICATION_PDF)
+	            .body(new InputStreamResource(pdfBytes));
+	}
 
 
 

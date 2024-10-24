@@ -8,23 +8,26 @@
 <body>
     <div class="container mt-5">
 		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-            <h2>Lista de Productos</h2>
+		    <h2>Lista de Productos</h2>
 
-            <div th:if="${error}" class="alert alert-danger" role="alert">
-                <span th:text="${error}"></span>
-            </div>
-            
-            <a th:href="@{/registrar_producto}" class="btn btn-primary mb-3">Registrar</a>
-			<div class="form-inline my-2 my-lg-0 ml-auto">
-			    <img th:src="${'/usuario_foto/' + foto}" alt="Profile" class="profile-pic" style ="width : 30px;">
-			    <a class="btn btn-outline-danger ml-2" th:href="@{/logout}" role="button">Logout</a>
-			    <a class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
-		<!-- Botón para generar PDF -->
-		<div class="text-right mb-3">
-		    <a target="_blank" th:href="@{/generar_pdf}" class="btn btn-info">Generar PDF</a>
-		</div>
+		    <div th:if="${error}" class="alert alert-danger" role="alert">
+		        <span th:text="${error}"></span>
+		    </div>
+		    
+		    <a th:href="@{/registrar_producto}" class="btn btn-primary mb-3">Registrar</a>
+		    <div class="form-inline my-2 my-lg-0 ml-auto">
+		        <img th:src="${'/usuario_foto/' + foto}" alt="Profile" class="profile-pic" style="width: 30px;">
+		        <span th:text="${nombreUsuario}" class="ml-2"></span> 
+		        <a class="btn btn-outline-danger ml-2" th:href="@{/logout}" role="button">Logout</a>
+		        <a class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
+		            <!-- Botón para generar PDF -->
+		            <div class="text-right mb-3">
+		                <a target="_blank" th:href="@{/generar_pdf}" class="btn btn-info">Generar PDF</a>
+		            </div>
+		        </a>
+		    </div>
+		</nav>
 
-</nav>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
