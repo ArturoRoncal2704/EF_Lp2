@@ -15,10 +15,10 @@
                 <h5 class="card-title" th:text="'Nombre: ' + ${producto.nombreProducto}">Nombre del Producto</h5>
                 <p class="card-text" th:text="'Precio: S/ ' + ${producto.precio}"></p>
                 <p class="card-text" th:text="'Stock: ' + ${producto.stock}"></p>
-                <p class="card-text" th:text="'Categoría: ' + ${producto.categoriaEntity.nombreCat}"></p> <!-- Asegúrate de que esta propiedad existe en tu entidad -->
-                
+                <p class="card-text" th:text="'Categoría: ' + ${producto.categoriaEntity.nombreCat}"></p> <!-- Verifica que esta propiedad exista -->
+
                 <a th:href="@{/lista}" class="btn btn-secondary">Regresar</a>
-                <a th:href="@{/delete/{id}(id=${producto.idProducto})}" class="btn btn-danger">Eliminar</a>
+                <a th:href="@{/delete/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar</a> <!-- Cambia idProducto por id -->
             </div>
         </div>
     </div>

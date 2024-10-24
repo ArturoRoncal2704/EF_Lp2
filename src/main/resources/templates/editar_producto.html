@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h2>Editar Producto</h2>
-    <form th:action="@{/editar_producto/{id}(id=${producto.idProducto})}" th:object="${producto}" method="post">
+    <form th:action="@{/editar_producto/{id}(id=${producto.id})}" th:object="${producto}" method="post"> <!-- Cambiado idProducto por id -->
         <div class="form-group">
             <label for="nombreProducto">Nombre del Producto:</label>
             <input type="text" th:field="*{nombreProducto}" class="form-control" id="nombreProducto" required>

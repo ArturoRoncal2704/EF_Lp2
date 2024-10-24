@@ -11,4 +11,5 @@ public interface ProductoService {
 	void crearProducto(ProductoEntity productoEntity);
 	void actualizarProducto(Integer id, ProductoEntity productoEntity);
 	void eliminarProducto(Integer id);
+	List<ProductoEntity> buscarProductoPorNombre(String nombre);
 }

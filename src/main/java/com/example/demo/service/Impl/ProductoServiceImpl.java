@@ -61,4 +61,10 @@ public class ProductoServiceImpl implements ProductoService{
 		
 	}
 
+	@Override
+	public List<ProductoEntity> buscarProductoPorNombre(String nombreProducto) {
+	    // Llama al método del repositorio que busca productos por nombre
+	    return productoRepository.findByNombreProductoContainingIgnoreCase(nombreProducto);
+	}
+
 }
