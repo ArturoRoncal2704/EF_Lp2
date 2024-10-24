@@ -7,57 +7,67 @@
 </head>
 <body>
     <div class="container mt-5">
-		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-		    <h2>Lista de Productos</h2>
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="display-4">Lista de Productos</h2>
+                <div class="d-flex align-items-center">
+                    <div class="me-4" style="padding-right: 15px;">
+                        <img th:src="${'/usuario_foto/' + foto}" alt="Profile" class="profile-pic rounded-circle" style="width: 70px; height: 70px;">
+                    </div>
+                    <div class="me-4" style="padding-right: 15px;">
+                        <span th:text="${nombreUsuario}" class="font-weight-bold" style="font-size: 1.3em;"></span>
+                    </div>
+                    <div>
+                        <a class="btn btn-warning" th:href="@{/logout}" role="button">Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
 
-		    <div th:if="${error}" class="alert alert-danger" role="alert">
-		        <span th:text="${error}"></span>
-		    </div>
-		    
-		    <a th:href="@{/registrar_producto}" class="btn btn-primary mb-3">Registrar</a>
-		    <div class="form-inline my-2 my-lg-0 ml-auto">
-		        <img th:src="${'/usuario_foto/' + foto}" alt="Profile" class="profile-pic" style="width: 30px;">
-		        <span th:text="${nombreUsuario}" class="ml-2"></span> 
-		        <a class="btn btn-outline-danger ml-2" th:href="@{/logout}" role="button">Logout</a>
-		        <a class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
-		            <!-- Botón para generar PDF -->
-		            <div class="text-right mb-3">
-		                <a target="_blank" th:href="@{/generar_pdf}" class="btn btn-info">Generar PDF</a>
-		            </div>
-		        </a>
-		    </div>
-		</nav>
+            <div th:if="${error}" class="alert alert-danger mb-4" role="alert">
+                <span th:text="${error}"></span>
+            </div>
 
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre Producto</th>
-                    <th>Precio</th>
-                    <th>Stock</th>
-                    <th>Categoría</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="producto : ${listaprod}">
-                    <td th:text="${producto.id}"></td>
-                    <td th:text="${producto.nombreProducto}"></td>
-                    <td th:text="${producto.precio}"></td>
-                    <td th:text="${producto.stock}"></td>
-                    <td th:text="${producto.categoriaEntity.nombreCat}"></td>
-                    <td>
-                        <div class="d-flex">
-                            <a th:href="@{/detalle_producto/{id}(id=${producto.id})}" class="btn btn-info me-2">Ver</a>
-                            <a th:href="@{/editar_producto/{id}(id=${producto.id})}" class="btn btn-warning">Editar</a>
-                            <a th:href="@{/delete/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar</a>
-                        </div>
-                    </td> 
-                </tr> 
-            </tbody>  
-        </table> 
+            <div class="mb-3">
+                <a th:href="@{/registrar_producto}" class="btn btn-primary me-2">Registrar</a>
+                <a target="_blank" th:href="@{/generar_pdf}" class="btn btn-info">Generar PDF</a>
+            </div>
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Producto</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${listaprod}">
+                        <td th:text="${producto.id}"></td>
+                        <td th:text="${producto.nombreProducto}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td th:text="${producto.stock}"></td>
+                        <td th:text="${producto.categoriaEntity.nombreCat}"></td>
+                        <td>
+                            <div class="text-center">
+                                <div class="d-inline-block">
+                                    <a th:href="@{/detalle_producto/{id}(id=${producto.id})}" class="btn btn-info mr-2">Ver</a>
+                                    <a th:href="@{/editar_producto/{id}(id=${producto.id})}" class="btn btn-warning mr-2">Editar</a>
+                                    <a th:href="@{/delete/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>  
+            </table> 
+        </div>
+
+        <script src="/js/bootstrap.bundle.min.js"></script> 
     </div>
+</body>
 
-    <script src="/js/bootstrap.bundle.min.js"></script> 
-</body> 
+
+
 </html>
